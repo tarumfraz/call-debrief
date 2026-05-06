@@ -1,0 +1,29 @@
+{
+
+  "hooks": {
+
+    "PostToolUse": [
+
+      {
+
+        "matcher": "Write",
+
+        "hooks": [
+
+          {
+
+            "type": "command",
+
+            "command": "mkdir -p debriefs && if echo \"$CLAUDE_TOOL_INPUT\" | grep -q 'debriefs/'; then echo \"[$(date '+%Y-%m-%d %H:%M')] Debrief saved\" >> debriefs/.log; fi"
+
+          }
+
+        ]
+
+      }
+
+    ]
+
+  }
+
+}
