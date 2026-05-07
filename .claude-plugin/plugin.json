@@ -1,17 +1,10 @@
 {
-
   "name": "call-debrief",
-
-  "description": "Turns raw enterprise customer call notes into structured outputs: follow-up email, internal Slack summary, and next steps doc. Built for solutions architects running multiple named accounts.",
-
+  "description": "A multi-agent plugin for Enterprise Technical Architects that transforms raw customer call notes into structured account team alignment artifacts — follow-up email, internal Slack summary, and next steps doc.",
   "version": "1.0.0",
-
   "author": {
-
     "name": "Tarum Fraz",
-
     "email": "tarumfraz@email.com"
-
-  }
-
+  },
+  "skills": "./skills/"
 }
