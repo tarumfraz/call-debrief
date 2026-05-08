@@ -3,7 +3,6 @@ name: debrief
 description: Debrief a customer call. Use when processing call notes, turning meeting notes into structured outputs, or generating account team alignment artifacts after customer conversations.
 argument-hint: <account-name> — e.g. "Momentum Brands" or "Duskline Commerce"
 allowed-tools: Read, Write, Bash, Task
-disable-model-invocation: false
 ---
 
 # 📞 Call Debrief
@@ -23,10 +22,12 @@ Run these three steps in sequence. Do not skip steps. Do not combine steps.
 
 ### 🔍 Step 1: Extract signal
 
-Invoke the `signal-extractor` agent with the raw call notes. Pass the full notes verbatim.
+Invoke the `signal-extractor` agent with the raw call notes. If the notes are in a file, read the file first and paste the full text content inline into the prompt — do not pass the file path.
 
 Tell it:
-"Extract structured signal from these call notes for account: $ARGUMENTS"
+"Extract structured signal from these call notes for account: $ARGUMENTS
+
+[paste full notes content here — not a file path, the actual text]"
 
 Wait for the signal-extractor to complete before continuing.
 
@@ -34,10 +35,12 @@ Wait for the signal-extractor to complete before continuing.
 
 ### 🔎 Step 2: Technical review
 
-Invoke the `technical-reviewer` agent with the extracted signal from Step 1.
+Take the COMPLETE text output from the signal-extractor agent in Step 1 — every line of it — and pass it directly to the `technical-reviewer` agent. Do not summarize it. Do not truncate it. Copy it verbatim.
 
-Tell it:
-"Review the technical completeness of this call signal for account: $ARGUMENTS — [paste full signal-extractor output]"
+Tell the technical-reviewer agent:
+"Here is the extracted signal from a customer call for account: $ARGUMENTS. Review it for missing technical details.
+
+[INSERT COMPLETE SIGNAL-EXTRACTOR OUTPUT VERBATIM HERE]"
 
 Show the full TECHNICAL REVIEW output to the user.
 
@@ -64,6 +67,8 @@ Pass it all three of the following:
 
 Tell it:
 "Generate the three outputs for account: $ARGUMENTS.
+
+Here are the raw call notes: [raw call notes]
 
 Here is the extracted signal: [signal-extractor output]
 
