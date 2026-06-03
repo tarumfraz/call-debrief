@@ -284,19 +284,3 @@ The same structure could be reused for:
 - integration discovery
 - AI workshop follow-ups
 
----
-
-# What I'd do with more time
-
-1. Add optional account context injection from `accounts/[name].md` so outputs can reference existing architecture, stakeholders, and account history alongside the current call notes.
-
-2. Split `output-writer` into three smaller output-specific agents so each output type can stay tightly scoped to its audience and formatting rules.
-
-3. Add optional Slack MCP support so the internal summary can post directly into account team channels after confirmation.
-
----
-
-# Author
-
-Tarum Fraz  
-github.com/tarumfraz
